@@ -1,0 +1,94 @@
+﻿@model Job_Recruiting_System.Models.Job
+
+@{
+    ViewData["Title"] = "Apply for a Job";
+}
+
+<style>
+    .label {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 0px 0px 5px 0px;
+    }
+
+    .container_applyjob {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .applyjob_form {
+        background: rgb(250,250,250);
+        width: 500px;
+        box-shadow: 0px 0px 5px gray;
+        border-radius: 20px;
+        padding: 20px;
+    }
+
+    .applyjob_button {
+        width: 80%;
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin: 8px 0px 0px 0px;
+    }
+</style>
+
+
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <!--    Asp-controller = "Home" => HomeController    -->
+            <!--    Asp-action = "Index" => Function Action Result Index()    -->
+            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Job Seeker</a>
+
+            <!-- Toggle button -->
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Back Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="@Url.Action("Policy", "Jobs")">Site Policy</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<div class="container_applyjob">
+    <div class="applyjob_form">
+        <div style="width:100%;text-align:center;"><h1>Apply for a Job</h1></div>
+
+        <form asp-action="ApplyJob" method="post">
+            <div class="form-group">
+                <label class="control-label label">Enter your name</label>
+                <input asp-for="Title" class="form-control" placeholder="John Smith" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label label">Enter your profesional field</label>
+                <input asp-for="Company" class="form-control" placeholder="" />
+            </div>
+
+            <div class="form-group">
+                <label class="control-label label">Write your CV</label>
+                <textarea asp-for="Description" rows="5" class="form-control" placeholder="Education, Professional Work etc.."></textarea>
+            </div>
+
+            <div style="width:100%;display:flex;align-items:center;justify-content:center;margin-bottom:15px;">
+                <button class="btn btn-success applyjob_button"><a style="color:black;text-decoration:none;" href="@Url.Action("Index", "Jobs")">Apply</a></button>
+            </div>
+        </form>
+    </div>
+</div>
